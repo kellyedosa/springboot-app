@@ -19,10 +19,10 @@ spec:
         image: kellyamadin/new-demo-docker-container-app-use:v1
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 8080
           name: http
           protocol: TCP
-# service type loadbalancer       
+# service type NodePort       
 ---
 apiVersion: v1
 kind: Service
@@ -36,7 +36,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8085
-  type: LoadBalancer
+    targetPort: 8080
+  type: NodePort
   selector:
     app: springboot-app
